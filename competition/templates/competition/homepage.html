@@ -1,0 +1,114 @@
+{% extends "competition/includes/base.html" %}
+
+{% block content %}
+
+    {% csrf_token %}
+
+    {% verbatim %}
+
+    <div class="row main-block" id="app">
+
+
+
+        <!-- Players List with Add Subsctract -->
+        <div class="col s3 color-main players">
+            <form @submit.prevent="createPlayer" style="margin-top: 1%">
+                <input placeholder="Password" id="password" v-model="password" type="password" class="form-control validate">
+                <input placeholder="Add Player" id="first_name" v-model="name" type="text" class="form-control validate">
+                <a @click="createPlayer" class="waves-effect waves-light btn-large green" style="width:100%">Add Player</a>
+            </form>
+
+
+            <ul class="collection">
+
+                <li class="collection-item" v-for="player in raw_data">
+                    <label>
+                        <input type="checkbox" v-model="checked_players" v-bind:value="player.name"/>
+                        <span>{{ player.name }} </span>
+                    </label>
+                </li>
+
+            </ul>
+
+            <a @click="removePlayer" class="waves-effect waves-light btn-large red" style="width:100%">Delete Player</a>
+
+        </div>
+
+
+        <!-- Competition Board -->
+        <div class="col s9 board competition color-main">
+
+            <div class="section actions color-block hoverable">
+
+                <div class="section">
+                    <h5 class="center align white-text">Player Selected : {{ checked_players }}</h5>
+                </div>
+                <div class="col m3">
+
+                </div>
+                <div class="col m6 center-align">
+                    <a @click="updateWinner" class="waves-effect waves-light btn-large green">Imposter Winner</a>
+                    <a @click="updateLooser" class="waves-effect waves-light btn-large red">Imposter Looser</a>
+                </div>
+                <div class="col m3">
+
+                </div>
+            </div>
+
+            <div class="section results green hoverable">
+
+                <div class="section">
+                    <h3 class="center align white-text">Top Player : wait for 1 Week</h3>
+                </div>
+
+                <ul class="collection" style="margin: 2%; overflow-y:auto; height: inherit;">
+
+                    <li class="collection-item" style="background-color: #048a04" >
+                        <div class="row" style="margin-bottom: 0px">
+
+                            <label class="col m4">
+                                <h6 style="color: white;font-weight: bold;">Name</h6>
+                            </label>
+                            <div class="col m6 center-align">
+                                <h6 style="color: white;font-weight: bold;">Scores[Imposter Wins / Imposter Lost]</h6>
+                            </div>
+                            <label class="col m2">
+                                <h6 style="color: white;font-weight: bold;">Ratio</h6>
+                            </label>
+
+                        </div>
+
+                    </li>
+
+                    <li class="collection-item green" v-for="one_data in raw_data">
+                        <div class="row" style="margin-bottom: 0px">
+
+                            <label class="col m4">
+                                <h6 style="color: white;font-weight: bold;">{{ one_data.name }}</h6>
+                            </label>
+                            <div class="col m6 center-align">
+                                <a class="col m5 waves-effect waves-light btn-small green">{{ one_data.wins }}</a>
+                                <div class="col m1"></div>
+                                <a class="col m5 waves-effect waves-light btn-small red">{{ one_data.losses }}</a>
+                                <div class="col m1"></div>
+                            </div>
+                            <label class="col m2">
+                                <h6 style="color: white;font-weight: bold;">{{ one_data.score }}</h6>
+                            </label>
+
+                        </div>
+
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    {% endverbatim %}
+
+{% endblock %}
+<!-- -->

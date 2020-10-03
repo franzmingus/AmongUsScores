@@ -1,0 +1,88 @@
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 90%;
+}
+
+.main-block {
+    height: 90%;
+    margin-top: 2%;
+}
+
+.players {
+    height: inherit;
+}
+
+.board {
+    height: inherit;
+    background-color: blueviolet;
+}
+
+.actions {
+    height: 28%;
+    margin: 1%;
+    background-color: blueviolet;
+}
+.results {
+    height: 68%;
+    margin: 1%;
+}
+
+input[type=text] {
+  color: white;
+}
+
+.color-main {
+    background-color: blueviolet;
+}
+
+.color-block {
+    background-color: #9C27B0;
+}
+
+.white-text {
+    color: azure;
+}
+
+.green-light {
+    background-color: #80ff80;
+}
+
+.green-dark {
+    background-color: #035d03;
+}
+
+@media only screen and (min-width: 601px) {
+  .container {
+    width: 85%;
+  }
+}
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 70%;
+  }
+}
+
+body::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #6649b8;
+}
+
+ul::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+ul::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background: #6649b8;
+}
